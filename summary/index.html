@@ -124,7 +124,10 @@ th{font-family:var(--sans); font-size:.78rem; text-transform:uppercase; letter-s
   font-family:var(--sans); font-size:1.05rem; margin:0 0 .35rem; font-weight:600;
 }
 .next .why{color:var(--soft); font-size:.97rem; margin:0 0 1.3rem}
+.next .why a{color:var(--accent); text-decoration:none; border-bottom:1px solid var(--rule)}
+.next .why a:hover{border-color:var(--accent)}
 .actions{display:flex; flex-wrap:wrap; gap:.7rem}
+.top-actions{margin-top:1.6rem}
 .btn{
   display:inline-flex; align-items:center; gap:.5rem;
   font-family:var(--mono); font-size:.82rem; font-weight:500;
@@ -166,6 +169,11 @@ footer a{color:var(--faint)}
   </p>
   <h1>The Attention Invoice</h1>
   <p class="sub">How AI slop transfers its cost to everyone else.</p>
+  <div class="actions top-actions">
+    <a class="btn primary" href="../"><span class="ar">&rarr;</span> Read the full book &middot; free</a>
+    <a class="btn" href="../#bookaudio"><span class="ar">&#9654;</span> Listen to the book &middot; free</a>
+    <a class="btn" href="https://ko-fi.com/s/b2d61a99ec" target="_blank" rel="noopener"><span class="ar">&nearr;</span> Buy the PDF on Ko-fi</a>
+  </div>
 </header>
 
 <p class="claim">
@@ -249,17 +257,13 @@ footer a{color:var(--faint)}
 </div>
 
 <div class="next">
-  <h3>Read the full inquiry</h3>
+  <h3>What's in the full inquiry</h3>
   <p class="why">
     Eight chapters: what the word actually names, why detecting AI-written text
     is the wrong question, what changes when slop reaches a repository instead
     of a feed, the five-question responsibility test in full, and what to do
-    about it on Monday.
+    about it on Monday. <a href="../">Read it &rarr;</a> or <a href="../#bookaudio">listen to it &rarr;</a>.
   </p>
-  <div class="actions">
-    <a class="btn primary" href="../"><span class="ar">&rarr;</span> Read the full book &middot; 19 pp</a>
-    <a class="btn" href="https://ko-fi.com/s/b2d61a99ec" target="_blank" rel="noopener"><span class="ar">&nearr;</span> Typeset PDF on Ko-fi</a>
-  </div>
 </div>
 
 <footer>
