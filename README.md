@@ -30,7 +30,7 @@ book/01-chapters/     manuscript source
 book/00-front-matter/ title and method note
 assets/cover.png      original editorial cover illustration
 narration/            clean text used for narration
-audio/                locally synthesized WAV chapter narration
+audio/                locally synthesized MP3 chapter narration (Kokoro TTS)
 research/sources.md   annotated source ledger
 ```
 
