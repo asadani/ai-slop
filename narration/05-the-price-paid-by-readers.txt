@@ -1,0 +1,43 @@
+﻿Chapter 5. The Price Paid by Readers
+
+The complaint about AI slop is often described as aesthetic: too many
+strange images, too much bland prose, another LinkedIn post that sounds
+like every other LinkedIn post. That is real, but it is not the deepest
+cost.
+
+The deeper cost is attention. Every plausible-looking low-value artifact
+asks a reader to make a small investigation. Is this true? Is it copied?
+Is there a real person behind it? Is the advice specific enough to use?
+Each investigation is cheap in isolation. At scale, it makes the
+information environment tiring.
+
+That fatigue changes behavior. Readers skim more aggressively. They
+trust less. They favor familiar sources because checking new ones is
+expensive. Small publishers and careful novices then pay a tax created
+by people who can flood the same channels with cheaper imitations.
+
+Researchers discussing AI slop describe the asymmetry directly: output
+can take far less effort to generate than a comparable human-made
+artifact, while its surface competence can disguise a lack of
+substance.[^ch5-1] The reader must do the expensive part after the
+producer has skipped it.
+
+The problem resembles spam, but only up to a point. Spam filters work
+because many messages share patterns and because the cost of a false
+negative is often low. Slop may be persuasive, topical, and nearly
+correct. The most expensive cases are not absurd. They are the calm,
+credible paragraph that leaves out the one condition that matters.
+
+This is also why a blanket hostility to synthetic media is a poor
+answer. The goal is not a return to a world where only people with spare
+time can publish. The goal is a world where the cost of publishing does
+not become an invoice sent to everyone who reads.
+
+In practice
+
+- Respect attention as a finite resource. Do not publish a summary when
+  a link and one sentence would do.
+- Make claims checkable. Link the source, name the uncertainty, and
+  remove decorative certainty.
+- Reward useful specificity. It is harder to mass-produce and easier for
+  a reader to test.

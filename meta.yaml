@@ -1,0 +1,77 @@
+# The Attention Invoice -- book-forge configuration.
+#
+# Flow mode: a continuous essay, not a claims-ledger book. There is no
+# verification workspace here (see research/sources.md, an annotated
+# footnote list, not a claim-binding gate), so matter.front.ai_disclosure
+# is "drafted", not "verified".
+
+slug: ai-slop
+title: "The Attention Invoice"
+subtitle: "How AI slop transfers its cost to everyone else."
+theme: sheet-oxblood        # only the QR settings are used in flow mode
+
+source:
+  template: book.html.in
+output:
+  html: index.html
+  pdf: ai-slop.pdf
+
+page:
+  size: A4
+
+cover:
+  art: assets/cover.png
+  page: false               # the essay renders its own cover, inline in the prose
+
+qr:
+  - slot: QR_AUTHOR
+    target: https://anujsadani.in
+  - slot: QR_TECH
+    target: https://tech.anujsadani.in/ai-slop/
+
+folio:
+  enabled: false             # @page margins only; no running-foot stamp needed yet
+
+matter:
+  mode: flow
+  css: true
+  front:
+    heading: "Copyright, permissions, and how this was made"
+    work_line: "The Attention Invoice &mdash; an essay on what \"AI slop\" names,
+      and who ends up paying for the attention it wastes."
+    ai_disclosure: drafted
+    anchor_before: '<!-- BOOK-FORGE:AFTER-COVER -->'
+    imprint: "First edition &middot; 2026"
+  about:
+    heading: "About the author"
+    anchor_before: '<!-- BOOK-FORGE:BEFORE-END -->'
+    qr_override:
+      - index: 1
+        blurb: "Read this essay online, and the rest of the shelf."
+        code: "tech.anujsadani.in"
+  colophon_html: |
+    <b>The Attention Invoice</b> &mdash; an essay by Anuj Sadani, 2026.<br>
+      Read online: <b>tech.anujsadani.in/ai-slop</b>
+
+# No licence is stated anywhere in the manuscript. all-rights-reserved
+# renders that faithfully rather than inventing a grant.
+license:
+  id: all-rights-reserved
+
+edition: "First edition"
+date: 2026-09
+
+links:
+  read_online: https://tech.anujsadani.in/ai-slop/
+
+verify:
+  cover_probes: ["Attention Invoice"]
+  body_probes:
+    - "AI slop is a failure of judgment"
+    - "What to Do on Monday"
+  matter_probes:
+    - "Copyright, permissions"
+    - "About the author"
+  min_images: 1
+  expect_pages: 24
+  page_tolerance: 3

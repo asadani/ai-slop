@@ -1,0 +1,39 @@
+﻿Chapter 4. The Artifact Cannot Tell You
+
+A reader sees the final text. They do not see the notebook beside it,
+the rejected drafts, the source tabs, the fact check, or the moment
+someone removed a sentence because it could not be defended.
+
+This is the central difficulty in calling something AI slop. We can
+observe the artifact and infer from it. We cannot observe the process
+that produced it.
+
+The familiar tells are weak evidence. Certain transitions, an abundance
+of headings, em dashes, a polished but generic cadence: these may
+suggest a model, but they do not tell us whether an author supplied a
+real claim, constructed the context, or checked the result. A detector
+faces the same limit. Even if it identified machine-generated prose
+perfectly, it would identify generation, not judgment.
+
+The opposite error is equally common. A human can type every word of a
+vague, derivative post. The labor is real; the contribution may still be
+zero. We should not confuse authorship with keystrokes.
+
+Authorship is the chain of decisions that makes an artifact answerable:
+why this question, why these sources, why this example, why this
+conclusion, why now. AI can participate in that chain. It cannot remove
+the need for someone to own it.
+
+This is why disclosure alone is not a quality test. ???Written with
+AI??? can be honest and still leave a reader with no reason to trust the
+work. ???Written by a human??? can conceal carelessness. The more useful
+convention is responsibility: the named author should be able to explain
+and defend the work.
+
+In practice
+
+- Keep an evidence trail for consequential work. A short list of sources
+  and decisions is more meaningful than a purity claim about tools.
+- Use disclosure to clarify process, not to borrow credibility.
+- Ask the author question. Can the person whose name is on this explain
+  why the claim is here and what would change their mind?

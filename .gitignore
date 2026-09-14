@@ -1,0 +1,19 @@
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+
+# book-forge build cache
+.bf-cache/
+
+# The typeset PDF is a local build artifact, not hosted in the repo.
+*.pdf
+
+# Local design-system reference clone (asadani.github.io), not part of this project.
+.reference-site/

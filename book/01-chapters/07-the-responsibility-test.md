@@ -1,0 +1,43 @@
+# Chapter 7. The Responsibility Test
+
+There is no reliable detector for care. That does not leave us helpless. It
+means the standard should be behavioral rather than forensic.
+
+A useful responsibility test has five questions.
+
+**What is the point?** A piece should be able to name the question it answers
+for a particular reader. “Content about AI” is a category, not a point.
+
+**What is new here?** The answer may be a firsthand observation, a synthesis,
+a worked example, a useful framing, or a decision. If nothing is new, a link is
+usually better than a post.
+
+**What was checked?** This does not demand impossible certainty. It demands that
+a publisher distinguish verified facts, interpretation, and speculation.
+
+**What was removed?** Editing is evidence of judgment. The sentences that did
+not survive are often more important than the sentences that did.
+
+**Who owns the result?** The person who publishes or merges should be able to
+answer questions about it without blaming the model.
+
+This test is deliberately indifferent to how many tokens a machine produced.
+It makes room for a writer who uses AI extensively and for one who uses none. It
+also makes the actual obligation visible: publishing is a promise to bear some
+of the reader’s verification burden yourself.
+
+In organizations, this should be a process rather than a cultural wish. People
+need enough time to read outputs, enough permission to say “this does not add
+up,” and incentives that do not reward artifact count over outcomes.
+
+The strongest defense against slop is not better taste. It is a system in which
+care is cheaper to exercise than carelessness is to pass downstream.
+
+## In practice
+
+- **Add the five questions to publishing and PR templates.**
+- **Treat uncertainty as useful information.** “We do not know” is often the
+  most valuable sentence in a report.
+- **Make ownership explicit.** A named owner is not decoration; it tells others
+  where understanding is supposed to live.
+

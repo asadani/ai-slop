@@ -1,0 +1,175 @@
+﻿Chapter 1. What Is AI Slop?
+
+LinkedIn now has a feedback option called ???Seems like AI slop.??? Open
+the menu on a post, choose it, and LinkedIn treats that as a signal that
+the post did not feel valuable. It does not remove the post or make a
+policy finding about its author.[^ch1-1]
+
+The feature is useful because it names a feeling that has become
+familiar. A person opens a post promising an insight about leadership,
+AI agents, or the future of work. The prose is smooth. The paragraphs
+are clean. There is a confident opening, a tidy list, and a final
+lesson. Then the reader reaches the end and realizes that no one has
+actually said anything.
+
+But the label also creates a confusion. People hear ???AI slop??? and
+infer ???text that an AI wrote.??? That is too broad to be useful. An AI
+can help a person research, outline, translate, edit, test an argument,
+or make a difficult idea clearer. None of those acts makes the result
+slop.
+
+The real question is harder: did someone exercise enough judgment to
+make this worth another person’s attention?
+
+The distinction LinkedIn gets right
+
+LinkedIn’s own definition is better than the name of its button. It
+describes AI slop as low-effort, likely AI-generated content that sounds
+polished on the surface but lacks a point of view, unique perspective,
+or substance. It says the distinction is not how content was created,
+but whether it adds value and reflects a person’s perspective,
+experience, or expertise.[^ch1-2]
+
+That is the right center of gravity. The generated sentence is not the
+offense. The unexamined sentence is.
+
+Imagine three people publishing an article about AI agents:
+
+  -----------------------------------------------------------------------
+  Process                 What happened           Slop?
+  ----------------------- ----------------------- -----------------------
+  Generate ??? publish    A model produces 1,500  Usually.
+                          words and the author    
+                          pastes them into a      
+                          post.                   
+
+  Human idea ??? AI draft The author supplies a   Usually not.
+  ??? human edit          thesis, examples,       
+                          corrections, and a real 
+                          rewrite.                
+
+  Human research ??? AI   The author decides      No.
+  synthesis ??? human     which sources matter,   
+  judgment                checks the claims, and  
+                          stands behind the       
+                          conclusion.             
+  -----------------------------------------------------------------------
+
+The table is intentionally about process rather than style. The visible
+artifact is a weak signal. A heavily directed and carefully edited piece
+can retain the rhythm of a model. A person can write generic,
+derivative, attention-seeking prose without touching an AI. Manual
+typing has never been a reliable measure of thought.
+
+Two articles can therefore look similar while being fundamentally
+different. One may be prompt, generate, publish. The other may contain
+an idea, reporting, context construction, criticism, correction, and
+verification before the final generation. A reader cannot reliably see
+that history from punctuation, em dashes, headings, or an AI-detection
+score.
+
+Calling both pieces slop because both contain generated tokens collapses
+authorship into keystrokes. Authorship is better understood as the work
+of choosing: choosing the question, the evidence, the examples, the
+omissions, and the words one is prepared to defend.
+
+A family resemblance, not a test
+
+There is no settled technical definition of AI slop. A recent scholarly
+paper argues that it has resisted formal definition and proposes three
+recurring properties instead: superficial competence, asymmetric effort,
+and mass producibility.[^ch1-3]
+
+Those properties explain why the phrase feels precise even when its
+boundary is fuzzy.
+
+Superficial competence is the polished shell. The grammar works. The
+image looks plausible. The memo has the expected headings. Underneath,
+the claims are unsupported, the summary never gets specific, or the
+apparent conclusion is just the premise repeated in better phrasing.
+
+Asymmetric effort is the production problem. It takes seconds to make a
+convincing-looking artifact and much longer for another person to decide
+whether it is accurate, useful, or original. The producer gets the
+convenience; the reader, reviewer, customer, or colleague inherits the
+verification cost.
+
+Mass producibility is the ecosystem problem. One mediocre image or
+awkward paragraph is not necessarily what people mean by slop. The term
+becomes more apt when a system can make thousands of near-substitutes
+for search rankings, ad impressions, engagement, or the appearance of
+output. Reporting on the rise of the term has repeatedly connected it to
+low-quality text, images, videos, and entire sites produced cheaply for
+search traffic.[^ch1-4]
+
+None of these is a pass-fail test. A personalized surreal image can be
+silly and still mean something to the person who made it. A concise
+generated answer to a narrow question can be exactly what someone needs.
+The scholarly account makes this point too: so-called slop can meet
+demand for niche or personalized content and can carry aesthetic or
+social value.[^ch1-5]
+
+That is why ???I dislike it??? and ???it is AI slop??? should not be
+interchangeable. The term is most useful when it names a failure that
+affects someone beyond the author: an output that asks for attention,
+trust, or review without having been given enough thought to earn any of
+them.
+
+The missing word is judgment
+
+The usual list of tells is familiar: generic language, repeated ideas,
+unnecessary length, fake profundity, too many headings, confident claims
+with no evidence. Those are symptoms. They matter because they suggest
+an absence of judgment, but none proves it.
+
+A person can use every fashionable AI writing habit and still make an
+original, careful argument. Another can avoid every tell and publish a
+confident falsehood they wrote alone. The important difference is
+whether someone took responsibility for the content: checked what could
+be checked, removed what did not hold up, supplied the context a model
+could not know, and decided that the piece had a reason to exist.
+
+This makes a better working definition:
+
+  AI slop is generated output whose cost of production has fallen much
+  faster than the effort spent deciding whether it deserves to exist.
+
+Or, in the shortest form: AI slop is a failure of judgment, not a method
+of generation.
+
+The definition does not let every AI-assisted author off the hook. It
+raises the bar in the place that matters. If a model makes drafting
+cheap, then choosing, checking, and editing become more valuable, not
+less. The person who publishes the result still owns the claim.
+
+The software version of the same problem
+
+This is not only a problem for feeds. Generative AI can produce code,
+documentation, tests, issue comments, design notes, and pull requests
+much faster than a team can understand them. The same asymmetry appears:
+generating an artifact is cheap; reviewing it, maintaining it, and
+recovering its rationale are expensive.
+
+The danger is not that AI wrote a function. A well-directed model can
+remove drudgery and leave more time for work that needs judgment. The
+danger arrives when a team measures generated volume as if it were
+progress, accepts code that nobody can explain, or creates documentation
+that no one has verified against the system it describes.
+
+That is engineering slop: artifacts that create the appearance of
+movement while increasing uncertainty about why they exist, whether they
+are correct, and who understands them. The technical debt is not simply
+AI-generated code. It is the gap between what the repository contains
+and what its humans can account for.
+
+The practical response is ordinary, even if the tools are new. Ask
+before publishing or merging: What is the point? What is new here? What
+did we verify? Who will own this when it breaks? If those questions do
+not have good answers, the artifact is not finished merely because it
+looks finished.
+
+LinkedIn’s button cannot reconstruct the invisible process behind a
+post. No detector can do that reliably either. But the phrase can still
+be useful if it reminds us what readers are reacting to: not the
+presence of a machine, but the absence of a mind that cared enough to
+decide.

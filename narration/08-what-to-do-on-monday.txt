@@ -1,0 +1,44 @@
+﻿Chapter 8. What to Do on Monday
+
+The useful response to AI slop is not to ban tools or to become a
+detective of punctuation. Both answers attack the visible surface and
+miss the real failure.
+
+Start with the work that leaves your hands.
+
+Before publishing, ask whether the piece contains a claim, a reader, and
+a reason. Remove the paragraph that only restates the title. Link the
+source that carries the fact. Replace a generic example with the actual
+case that changed your mind. If the answer is not ready, keep it as a
+note.
+
+Before merging, ask whether the author can narrate the change. Ask what
+was tested, what assumptions remain, and what would make the design
+wrong. Keep the change small enough for a reviewer to understand. These
+are not anti-AI rules. They are the old rules of responsible work, made
+urgent by a new rate of output.
+
+At the platform level, reward useful material rather than the frequency
+of posting. LinkedIn???s own guidance makes the same broad distinction:
+AI-assisted content is welcome when it reflects a real person???s
+perspective, experience, or expertise; generic and repetitive material
+is the problem.[^ch8-1] That is a reasonable direction, even if no
+feedback button can see the full process behind a post.
+
+The word ???slop??? will remain imprecise. It may even become too broad
+to survive. The underlying problem will not disappear with the
+vocabulary: when production gets easier, judgment becomes the scarce
+resource.
+
+That is the thing worth defending. Not human typing for its own sake.
+Not a nostalgia for artificial scarcity. The expectation that when a
+person asks for our attention, someone has done the work of deciding why
+we should give it.
+
+In practice
+
+- Use AI to increase the quality of decisions, not only the quantity of
+  artifacts.
+- Publish less when less is all you have. Silence is cheaper than asking
+  strangers to sort through a draft.
+- Stand behind the work. That is what authorship has always meant.

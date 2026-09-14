@@ -1,0 +1,47 @@
+# Chapter 6. When Slop Enters the Repository
+
+Software teams are beginning to meet the same problem in a form they recognize
+immediately. An AI assistant can generate a feature branch, a test suite, a
+migration, a design memo, and a pull-request description before the reviewer has
+finished reading the ticket.
+
+The code may run. That is not the end of the question.
+
+Code has a longer afterlife than a post. It will be reviewed, deployed,
+debugged, changed by someone new, and used as evidence of how the system works.
+A patch that its author cannot explain transfers all of that future reasoning to
+other people.
+
+A recent paper frames this as a software commons problem: individual gains from
+AI-generated output can externalize costs onto reviewer capacity, codebase
+integrity, shared knowledge, and collaborative trust.[^ch6-1] Another qualitative
+study of developer discussion identified review friction and quality degradation
+as central themes in complaints about AI-assisted software development.[^ch6-2]
+These are early accounts, not settled measurements. They are still useful
+because they name where the cost appears.
+
+The engineering version of slop is therefore not “code made with AI.” It is code
+that creates the appearance of progress while increasing uncertainty about
+behavior, rationale, and ownership.
+
+The crucial question is not whether the assistant wrote the first draft. It is
+whether a human can trace the change from requirement to design to tests and can
+carry the responsibility when it fails. When that chain exists, AI can reduce
+drudgery. When it does not, generated volume becomes technical debt at production
+speed.
+
+## In practice
+
+- **Review for explanation, not only execution.** A passing test is necessary;
+  an understood change is durable.
+- **Require a rationale for non-obvious code.** Generated comments are not a
+  rationale unless someone verified them.
+- **Keep changes small enough to own.** A reviewer should be able to say what
+  changed, why it is safe, and who will maintain it.
+
+[^ch6-1]: “AI Slop and the Software Commons” (2026), abstract.
+<https://arxiv.org/abs/2604.16754>
+
+[^ch6-2]: “An Endless Stream of AI Slop” (2026), abstract.
+<https://arxiv.org/abs/2603.27249>
+

@@ -1,0 +1,13 @@
+.prose > h1:first-child { display: none; }
+.prose > h2:first-child { display: none; }
+.prose > p:has(img[src="assets/cover.png"]) { margin: 0 0 48px; }
+.prose img[src="assets/cover.png"] { display:block; width:100%; max-width:520px; margin:0 auto; border-radius:8px; box-shadow:0 8px 28px var(--shadow); }
+.prose table { width:100%; border-collapse:collapse; margin:24px 0; background:var(--surface); border:1px solid var(--border); border-radius:8px; overflow:hidden; font-size:14px; }
+.prose th,.prose td { padding:11px 14px; text-align:left; vertical-align:top; border-bottom:1px solid var(--border-light); }
+.prose th { background:var(--bg-alt); font:700 11px var(--sans); letter-spacing:.06em; text-transform:uppercase; color:var(--text-muted); }
+.prose blockquote { margin:28px 0; padding:16px 20px; border-left:3px solid var(--accent); background:var(--accent-bg); color:var(--text-muted); }
+.prose ul { margin:0 0 22px 22px; } .prose li { margin:8px 0; }
+.prose .footnotes { border-top:1px solid var(--border); margin-top:48px; padding-top:20px; font-size:13px; color:var(--text-muted); }
+.prose h1 { margin-top:78px; font-family:var(--serif); font-size:36px; line-height:1.15; color:var(--text); }
+.prose h2 { margin:52px 0 20px; font-family:var(--serif); font-size:28px; color:var(--text); line-height:1.2; }
+.prose h3 { margin:28px 0 12px; }

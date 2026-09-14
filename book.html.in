@@ -1,0 +1,1691 @@
+<meta charset="utf-8">
+<title>The Attention Invoice</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="The Attention Invoice: how AI slop transfers its cost to everyone else.">
+<meta name="author" content="Anuj Sadani">
+<link rel="canonical" href="https://tech.anujsadani.in/ai-slop/">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tech.anujsadani.in/ai-slop/">
+<meta property="og:site_name" content="Anuj Sadani | Tech">
+<meta property="og:title" content="The Attention Invoice">
+<meta property="og:description" content="The Attention Invoice: how AI slop transfers its cost to everyone else.">
+<meta property="og:image" content="https://tech.anujsadani.in/assets/profile-pic.png">
+<meta property="article:published_time" content="2026-09-14">
+<meta property="article:author" content="Anuj Sadani">
+<meta name="twitter:card" content="summary_large_image">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Book",
+  "name": "The Attention Invoice",
+  "description": "The Attention Invoice: how AI slop transfers its cost to everyone else.",
+  "url": "https://tech.anujsadani.in/ai-slop/",
+  "author": {
+    "@type": "Person",
+    "@id": "https://anujsadani.in/#person",
+    "name": "Anuj Sadani",
+    "url": "https://anujsadani.in/"
+  }
+}
+</script>
+<!-- Set theme before first paint: saved choice wins, else OS preference. No flash. -->
+<script>
+  (function () {
+    try {
+      var saved = localStorage.getItem('theme');
+      var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch (e) {}
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+<style>
+{{FONT_FACES}}
+  :root {
+    --bg:           #F5F1EB;
+    --bg-alt:       #EDEAE3;
+    --surface:      #FFFFFF;
+    --surface-tint: #FAF8F5;
+    --border:       #DDD9D0;
+    --border-light: #EAE7E0;
+    --text:         #1A1714;
+    --text-body:    #3D3A35;
+    --text-muted:   #6B6760;
+    --text-subtle:  #9B9892;
+    --accent:       #C85C2D;
+    --accent-light: #E8895D;
+    --accent-bg:    #FDF1EB;
+    --accent-border:#F0C4A8;
+    --green:        #2A7A4B;
+    --green-bg:     #EAF5EF;
+    --green-border: #A8D9BC;
+    --blue:         #2563A8;
+    --blue-bg:      #EAF1FA;
+    --blue-border:  #A8C5E8;
+    --red:          #B83535;
+    --red-bg:       #FAEBEB;
+    --red-border:   #E8AAAA;
+    --code-bg:      #1A1714;  /* code blocks stay dark in BOTH modes */
+    --shadow:       rgba(200,92,45,0.08);
+    --serif:        'Newsreader', Georgia, serif;
+    --sans:         'Inter', system-ui, sans-serif;
+    --mono:         'JetBrains Mono', 'Courier New', monospace;
+    color-scheme: light;
+  }
+
+  /* ─── DARK MODE ───────────────────────────────────────── */
+  /* Same design, dark palette. Toggled via [data-theme] on <html>
+     (nav button + OS default + localStorage — see scripts). Warm dark,
+     not pure black; the terracotta accent brightens so it reads on dark. */
+  [data-theme="dark"] {
+    --bg:           #14110D;
+    --bg-alt:       #1E1A14;
+    --surface:      #1A1611;
+    --surface-tint: #211C16;
+    --border:       #332C24;
+    --border-light: #2A241D;
+    --text:         #F2EEE7;
+    --text-body:    #D8D2C8;
+    --text-muted:   #A39C90;
+    --text-subtle:  #7A7468;
+    --accent:       #E8895D;
+    --accent-light: #F0A079;
+    --accent-bg:    #2C1E14;
+    --accent-border:#5A3826;
+    --green:        #5FD699;
+    --green-bg:     #14241B;
+    --green-border: #2E5640;
+    --blue:         #6FB0F0;
+    --blue-bg:      #142233;
+    --blue-border:  #2C4A6E;
+    --red:          #F08585;
+    --red-bg:       #2E1717;
+    --red-border:   #663434;
+    --code-bg:      #0E0B08;
+    --shadow:       rgba(0,0,0,0.45);
+    color-scheme: dark;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text-body);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.75;
+    font-weight: 400;
+  }
+
+  /* ─── NAV ─────────────────────────────────────────────── */
+  nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 48px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-brand {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: 0.01em;
+    text-decoration: none;
+  }
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .nav-tag {
+    background: var(--accent);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 3px;
+    letter-spacing: 0.04em;
+  }
+  /* Light/dark toggle — shows the moon in light mode (click → dark) and
+     the sun in dark mode (click → light). */
+  .theme-toggle {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .theme-toggle:hover { color: var(--accent); border-color: var(--accent-border); }
+  .theme-icon-sun { display: none; }
+  [data-theme="dark"] .theme-icon-sun  { display: inline; }
+  [data-theme="dark"] .theme-icon-moon { display: none; }
+
+  /* ─── LAYOUT ──────────────────────────────────────────── */
+  .page-wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* ─── HERO ────────────────────────────────────────────── */
+  .hero {
+    padding: 64px 0 48px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 48px;
+  }
+  .hero-eyebrow {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(34px, 5vw, 52px);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+  .hero-deck {
+    font-size: 18px;
+    line-height: 1.65;
+    color: var(--text-muted);
+    max-width: 640px;
+    font-weight: 300;
+  }
+  .hero-meta {
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+    font-size: 12px;
+    color: var(--text-subtle);
+    font-family: var(--mono);
+  }
+  .hero-meta-sep { color: var(--border); }
+
+  /* ─── BODY TEXT ───────────────────────────────────────── */
+  .prose p {
+    color: var(--text-body);
+    margin-bottom: 20px;
+    font-size: 17px;
+    line-height: 1.78;
+  }
+  .prose p:last-child { margin-bottom: 0; }
+  strong { color: var(--text); font-weight: 600; }
+  em { font-style: italic; color: var(--text-body); }
+
+  /* ─── SECTION HEADING ─────────────────────────────────── */
+  /* scroll-margin-top keeps the sticky 52px nav from covering the heading
+     when you jump to a #anchor. */
+  .section { margin-top: 56px; scroll-margin-top: 72px; }
+  .section-label {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .section-label a { color: inherit; text-decoration: none; transition: color 0.15s; }
+  .section-label a:hover { color: var(--text); }
+  .section h2 {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    margin-bottom: 24px;
+  }
+  /* Self-linking heading: the whole H2 is an anchor to its own section,
+     and a '#' affordance appears on hover. */
+  .section h2 a.anchor { color: inherit; text-decoration: none; position: relative; }
+  .section h2 a.anchor:hover::before {
+    content: '#';
+    position: absolute;
+    left: -22px;
+    color: var(--accent);
+    font-weight: 400;
+  }
+  h3 {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text);
+    margin: 32px 0 14px;
+    letter-spacing: -0.01em;
+  }
+
+  /* ─── BANNER ──────────────────────────────────────────── */
+  .banner {
+    background: var(--accent-bg);
+    border: 1px solid var(--accent-border);
+    border-left: 3px solid var(--accent);
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin-bottom: 40px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .banner-badge {
+    background: var(--accent);
+    color: #fff;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 3px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .banner p { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin: 0; }
+  .banner a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+
+  /* ─── PLAIN ENGLISH ───────────────────────────────────── */
+  .plain-english {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--accent);
+    border-radius: 0 0 8px 8px;
+    padding: 28px 32px;
+    margin: 0 0 56px;
+  }
+  .plain-english .pe-label {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .pe-list { list-style: none; padding: 0; }
+  .pe-list li {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border-light);
+    font-size: 16px;
+    color: var(--text-body);
+    line-height: 1.6;
+  }
+  .pe-list li:last-child { border-bottom: none; }
+  .pe-num {
+    width: 26px;
+    height: 26px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+    font-family: var(--mono);
+  }
+
+  /* ─── TOC (jump links) ────────────────────────────────── */
+  /* Optional. Hrefs point at the section ids; pairs with the
+     self-linking H2 anchors below. 2-up grid, single column on mobile. */
+  .toc {
+    background: var(--surface-tint);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px 22px;
+    margin: 0 0 56px;
+  }
+  .toc-label {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .toc-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px 28px;
+  }
+  .toc-list li { display: flex; align-items: baseline; gap: 10px; font-size: 14px; line-height: 1.5; }
+  .toc-num { font-family: var(--mono); font-size: 11px; color: var(--text-subtle); flex-shrink: 0; width: 18px; }
+  .toc-list a {
+    color: var(--text-body);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .toc-list a:hover { color: var(--accent); border-bottom-color: var(--accent-border); }
+
+  /* ─── CARDS GRID ──────────────────────────────────────── */
+  /* Auto-balancing so you never get an orphan row:
+       default 3-up → 3 cards = 1×3, 6 cards = 3×2
+       exactly 2 or 4 cards drop to 2 columns → 2 = 1×2, 4 = 2×2
+     Force a count with .cols-2 / .cols-3 if you ever need to. */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 24px 0;
+  }
+  .cards-grid:has(> .card:nth-child(2):last-child),
+  .cards-grid:has(> .card:nth-child(4):last-child),
+  .cards-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .cards-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 22px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .card:hover {
+    border-color: var(--accent-border);
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+  .card-icon { font-size: 20px; margin-bottom: 10px; }
+  .card h4 {
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 7px;
+  }
+  .card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin: 0; }
+  .card.card-red { border-color: var(--red-border); }
+  .card.card-red:hover { border-color: var(--red); box-shadow: 0 2px 8px rgba(184,53,53,0.08); }
+  .card.card-red .card-icon-badge {
+    display: inline-block;
+    background: var(--red-bg);
+    color: var(--red);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 2px 7px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  .card.card-green { border-color: var(--green-border); }
+  .card.card-green:hover { border-color: var(--green); box-shadow: 0 2px 8px rgba(42,122,75,0.08); }
+  .card.card-green .card-icon-badge {
+    display: inline-block;
+    background: var(--green-bg);
+    color: var(--green);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 2px 7px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  .card.card-blue { border-color: var(--blue-border); }
+  .card.card-blue:hover { border-color: var(--blue); box-shadow: 0 2px 8px rgba(37,99,168,0.08); }
+  .card.card-blue .card-icon-badge {
+    display: inline-block;
+    background: var(--blue-bg);
+    color: var(--blue);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 2px 7px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  /* ─── CODE BLOCK ──────────────────────────────────────── */
+  .code-block {
+    background: var(--code-bg);
+    border-radius: 7px;
+    overflow: hidden;
+    margin: 20px 0;
+  }
+  .code-block .cb-label {
+    padding: 9px 16px;
+    background: rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-family: var(--mono);
+    font-size: 11px;
+    color: #888;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .code-block pre {
+    padding: 20px;
+    font-family: var(--mono);
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: #e8e8e8;
+    overflow-x: auto;
+    white-space: pre;
+  }
+  .code-block .tok-key  { color: #fdba74; }
+  .code-block .tok-val  { color: #86efac; }
+  .code-block .tok-cmt  { color: #6b7280; font-style: italic; }
+  .code-block .tok-str  { color: #93c5fd; }
+  .code-block .tok-acc  { color: #fde047; }
+
+  /* ─── CALLOUT ─────────────────────────────────────────── */
+  .callout {
+    background: var(--accent-bg);
+    border: 1px solid var(--accent-border);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+    padding: 18px 22px;
+    margin: 24px 0;
+  }
+  .callout .callout-lbl {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .callout p { font-size: 15px; color: var(--text-muted); margin: 0; line-height: 1.7; }
+
+  /* ─── DETAIL LIST ─────────────────────────────────────── */
+  ul.dl {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--surface);
+  }
+  /* Not flex: a <strong> lead-in + body text must flow inline as one
+     paragraph. Flex would split the →, the <strong>, and the body into
+     three separate columns. So: left gutter + absolutely positioned →. */
+  ul.dl li {
+    position: relative;
+    padding: 13px 18px 13px 34px;
+    font-size: 15px;
+    color: var(--text-body);
+    border-bottom: 1px solid var(--border-light);
+    line-height: 1.65;
+  }
+  ul.dl li:last-child { border-bottom: none; }
+  ul.dl li::before {
+    content: '→';
+    position: absolute;
+    left: 14px;
+    top: 13px;
+    color: var(--accent);
+    font-size: 14px;
+  }
+
+  /* ─── TABLE ───────────────────────────────────────────── */
+  /* Default column sizing is content-driven (table-layout: auto) — best
+     for prose tables. To CONTROL column widths, add class="fixed" to the
+     <table> AND a <colgroup> of <col style="width:..%"> — fixed layout is
+     what actually makes those widths stick (auto layout treats colgroup
+     widths as hints and routinely ignores them, the usual "table looks
+     off" cause). Long unbroken strings wrap rather than blow a column out;
+     on narrow screens the wrapper scrolls horizontally. */
+  .data-table {
+    overflow-x: auto;
+    margin: 24px 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+  }
+  .data-table table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .data-table table.fixed { table-layout: fixed; }
+  .data-table thead th {
+    padding: 11px 16px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: var(--bg-alt);
+    border-bottom: 1px solid var(--border);
+    color: var(--text-muted);
+    white-space: nowrap;      /* short header labels stay on one line */
+    vertical-align: bottom;
+  }
+  .data-table tbody td {
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--border-light);
+    color: var(--text-body);
+    vertical-align: top;
+    line-height: 1.55;
+    overflow-wrap: anywhere;  /* long tokens/URLs wrap, never overflow */
+  }
+  .data-table tbody tr:last-child td { border-bottom: none; }
+  .data-table tbody tr:hover td { background: var(--surface-tint); }
+  .data-table tbody td:first-child { font-weight: 600; color: var(--text); }  /* row label */
+  /* Alignment helpers — apply to the <th> AND every <td> in that column */
+  .data-table th.center, .data-table td.center { text-align: center; }
+  .data-table th.num,    .data-table td.num    { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .data-table th.nowrap, .data-table td.nowrap { white-space: nowrap; }
+  .td-yes  { color: var(--green); font-weight: 600; }
+  .td-no   { color: var(--red);   font-weight: 600; }
+  .td-mono { font-family: var(--mono); font-size: 12px; color: var(--accent); }
+
+  /* ─── FOOTER ──────────────────────────────────────────── */
+  footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 20px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  .footer-refs { font-size: 12px; color: var(--text-subtle); }
+
+  @media (max-width: 600px) {
+    nav { padding: 0 20px; }
+    .hero { padding: 40px 0 36px; }
+    .page-wrap { padding: 0 16px 60px; }
+    footer { padding: 16px 20px; }
+    .plain-english { padding: 20px; }
+    .toc-list { grid-template-columns: 1fr; }
+    /* All card grids collapse to a single column on phones. */
+    .cards-grid,
+    .cards-grid.cols-2,
+    .cards-grid.cols-3,
+    .cards-grid:has(> .card:nth-child(2):last-child),
+    .cards-grid:has(> .card:nth-child(4):last-child) { grid-template-columns: 1fr; }
+  }
+
+.prose > h1:first-child { display: none; }
+.prose > h2:first-child { display: none; }
+.prose > p:has(img[src="assets/cover.png"]) { margin: 0 0 48px; }
+.prose img[src="assets/cover.png"] { display:block; width:100%; max-width:520px; margin:0 auto; border-radius:8px; box-shadow:0 8px 28px var(--shadow); }
+.prose table { width:100%; border-collapse:collapse; margin:24px 0; background:var(--surface); border:1px solid var(--border); border-radius:8px; overflow:hidden; font-size:14px; }
+.prose th,.prose td { padding:11px 14px; text-align:left; vertical-align:top; border-bottom:1px solid var(--border-light); }
+.prose th { background:var(--bg-alt); font:700 11px var(--sans); letter-spacing:.06em; text-transform:uppercase; color:var(--text-muted); }
+.prose blockquote { margin:28px 0; padding:16px 20px; border-left:3px solid var(--accent); background:var(--accent-bg); color:var(--text-muted); }
+.prose ul { margin:0 0 22px 22px; } .prose li { margin:8px 0; }
+.prose .footnotes { border-top:1px solid var(--border); margin-top:48px; padding-top:20px; font-size:13px; color:var(--text-muted); }
+.prose h1 { margin-top:78px; font-family:var(--serif); font-size:36px; line-height:1.15; color:var(--text); }
+.prose h2 { margin:52px 0 20px; font-family:var(--serif); font-size:28px; color:var(--text); line-height:1.2; }
+.prose h3 { margin:28px 0 12px; }
+
+/* Listen-along player for articles. Written by article_player.py.
+   Edit this file to restyle every article at once. */
+.ap{--ap-warm:#FBF8F3;--ap-warm-2:#F4EFE7;--ap-line:#E4DCD0;--ap-dim:#8A8175;
+ margin:34px 0;border:1px solid var(--ap-line);border-radius:10px;overflow:hidden;
+ background:var(--ap-warm);color:var(--text,#1A1714);
+ box-shadow:0 1px 2px rgba(60,45,30,.04),0 12px 28px -20px rgba(60,45,30,.3)}
+[data-theme="dark"] .ap{--ap-warm:#1A1611;--ap-warm-2:#211C16;--ap-line:#332C24;
+ --ap-dim:#A39C90;color:var(--text,#F2EEE7)}
+.ap *{box-sizing:border-box}
+.ap-hd{display:flex;align-items:center;gap:13px;padding:15px 16px}
+.ap-ico{flex:none;width:34px;height:34px;border-radius:50%;background:var(--accent,#C85C2D);
+ color:#fff;display:grid;place-items:center;font-size:12px}
+.ap-hd>div{flex:1;min-width:0}
+.ap-kick{display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--ap-dim)}
+.ap-hd b{display:block;font-size:15.5px;margin-top:2px}
+.ap-sub{display:block;font-size:12.5px;color:var(--ap-dim);margin-top:2px;
+ font-variant-numeric:tabular-nums}
+.ap-more,.ap-rate{flex:none;font:inherit;font-size:12px;padding:5px 12px;border-radius:999px;
+ cursor:pointer;background:transparent;color:var(--ap-dim);border:1px solid var(--ap-line)}
+.ap-more:hover,.ap-rate:hover{border-color:var(--text,#1A1714);color:var(--text,#1A1714)}
+.ap-rate{min-width:3.4em;text-align:center;font-variant-numeric:tabular-nums}
+.ap-now{margin:0;padding:0 16px 12px;font-size:12.5px;color:var(--ap-dim);
+ overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ap audio{width:100%;display:block;border-top:1px solid var(--ap-line);
+ background:var(--ap-warm-2)}
+.ap-list{list-style:none;margin:0;padding:6px;border-top:1px solid var(--ap-line);
+ max-height:17em;overflow:auto;scrollbar-width:thin;scrollbar-color:#B9AF9F transparent}
+.ap-list::-webkit-scrollbar{width:6px}
+.ap-list::-webkit-scrollbar-track{background:transparent}
+.ap-list::-webkit-scrollbar-thumb{background:#C6BCAC;border-radius:3px}
+.ap-list::-webkit-scrollbar-thumb:hover{background:#8A8175}
+.ap-list button{display:flex;gap:12px;align-items:baseline;width:100%;padding:8px 10px;
+ border-radius:6px;font:inherit;font-size:13.5px;text-align:left;background:none;
+ border:0;cursor:pointer;color:var(--text-body,#3D3A35)}
+.ap-list button:hover{background:var(--ap-warm-2);color:var(--text,#1A1714)}
+.ap-list button[aria-current="true"]{background:var(--ap-warm-2);
+ color:var(--accent,#C85C2D);font-weight:600}
+.ap-n{flex:none;width:1.7em;font-size:11.5px;color:var(--ap-dim);
+ font-variant-numeric:tabular-nums}
+.ap-nm{flex:1;min-width:0}
+.ap-d{flex:none;font-size:11.5px;color:var(--ap-dim);font-variant-numeric:tabular-nums}
+/* Docked, not floating. A pill hovering mid-page sits on top of the text it
+   is meant to accompany; a bar at the edge with matching body padding never
+   covers a word. */
+.ap-mini{position:fixed;left:0;right:0;bottom:0;z-index:9999;width:100%;
+ display:flex;align-items:center;gap:14px;padding:9px 20px;
+ border-top:1px solid var(--ap-line);background:var(--ap-warm);
+ color:var(--text,#1A1714);font:inherit;font-size:13px;
+ box-shadow:0 -8px 24px -16px rgba(60,45,30,.5)}
+.ap-mb{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;
+ background:var(--accent,#C85C2D);color:#fff;border:0;cursor:pointer;font-size:10px;
+ font-family:inherit;line-height:1}
+.ap-mb.ghost{background:transparent;color:var(--ap-dim);border:1px solid var(--ap-line)}
+.ap-mb.ghost:hover{color:var(--text,#1A1714);border-color:var(--text,#1A1714)}
+.ap-mt{flex:none;max-width:22em;min-width:0;overflow:hidden;text-overflow:ellipsis;
+ white-space:nowrap;background:none;border:0;padding:0;font:inherit;cursor:pointer;
+ color:var(--text,#1A1714);text-align:left}
+.ap-mt:hover{color:var(--accent,#C85C2D)}
+.ap-mp{flex:1;min-width:4em;height:4px;border-radius:2px;background:var(--ap-line);
+ cursor:pointer;position:relative}
+.ap-mpf{position:absolute;inset:0 auto 0 0;width:0;border-radius:2px;
+ background:var(--accent,#C85C2D)}
+.ap-mtime{flex:none;font-style:normal;font-size:11.5px;color:var(--ap-dim);
+ font-variant-numeric:tabular-nums}
+.ap-mr{width:auto;padding:0 10px;border-radius:999px;min-width:3.2em}
+body.ap-bar-open{padding-bottom:56px}
+@media (max-width:640px){.ap-mini{gap:10px;padding:8px 12px}.ap-mt{display:none}}
+@media print{.ap,.ap-mini{display:none!important}}
+
+
+/* ============================================================
+   Print edition. Chrome degrades variable/webfont faces to Type 3
+   when printing, so the PDF must not depend on the Google Fonts
+   loaded above -- it uses book-forge's pre-cut static faces instead,
+   swapped in only for @media print via the same custom properties
+   every component already reads (var(--serif)/--sans/--mono). The
+   screen edition is untouched.
+   ============================================================ */
+@page { size: A4; margin: 24mm 21mm 22mm 21mm; }
+@page :first { margin: 0; }
+
+@media print {
+  :root {
+    --serif: "Source Serif 4", Georgia, serif;
+    --sans: "Archivo", Arial, sans-serif;
+    --mono: "IBM Plex Mono", "Courier New", monospace;
+  }
+  html, body { background: #fff; }
+  nav, #articleaudio, #ap-mini { display: none !important; }
+  .page-wrap { max-width: none; padding: 0; }
+  .hero { border-bottom: none; }
+  section.chapter, section.refs { break-before: page; page-break-before: always; }
+  section.chapter:first-of-type { break-before: auto; page-break-before: auto; }
+  .prose img[src="assets/cover.png"] { break-inside: avoid; }
+  blockquote, table, .footnotes li { break-inside: avoid; }
+}
+
+/* Screen-only: hide the nonprinting audio player from an
+   accidental duplicate rendering -- kept simple, no extra rule needed
+   since the player already only renders inside #articleaudio. */
+/* BOOK-FORGE:MATTER-CSS v1 sha=c9624f4344d7 */
+/* book-forge matter -- flow mode.
+ *
+ * Injected into essays that were never built as books. Each has its own
+ * stylesheet, and they collide in specific, verified ways:
+ *
+ *   - they reuse `rule`, `lead`, `card`, `meta`, `small`, `cover`, `beat`,
+ *     `kicker`, `num`, `refs` for their own purposes, and two of them define
+ *     `preface` to mean a pull-quote. So every selector here is scoped under
+ *     .bf-matter and nothing is styled by element alone at document scope.
+ *
+ *   - they define the SAME custom property names with different values, and
+ *     idp-barbell has --crimson with no --accent at all. So the tokens below
+ *     are declared on .bf-matter (never :root, which a host's later :root
+ *     block would win) and each falls back through the names the hosts
+ *     actually use before reaching a literal.
+ *
+ * Type is deliberately NOT set: font-family inherits from the host, so the
+ * matter reads as part of the book it is bound into rather than as a graft.
+ */
+
+.bf-matter {
+  --bf-ink:    var(--ink, #161A21);
+  --bf-soft:   var(--ink-soft, var(--soft, #4E5665));
+  --bf-faint:  var(--ink-faint, var(--faint, #7C8593));
+  --bf-rule:   var(--rule, #D8DCE3);
+  --bf-paper:  var(--paper, #FFFFFF);
+  --bf-accent: var(--accent, var(--crimson, #9E2B3A));
+
+  box-sizing: border-box;
+  color: var(--bf-ink);
+  text-align: left;
+  font-style: normal;
+}
+
+.bf-matter *,
+.bf-matter *::before,
+.bf-matter *::after { box-sizing: border-box; }
+
+/* Do NOT impose a width or padding by default. Every host already lays its
+   own content out -- a bare `section` card at 820px in one, a `.wrap` at 740px
+   in another -- and overriding that made the matter render at a different
+   measure from the book it sits in, which reads as a different document.
+   Set matter.measure in meta.yaml only for a host that constrains nothing. */
+/* Deliberately declares NO max-width. `.bf-flow` outranks a host's bare
+   `section { max-width: 820px }`, so declaring one here -- even
+   `var(--bf-measure, none)` -- overrides the host and renders the matter at a
+   different width from the book around it. Hosts that constrain nothing can
+   opt in with matter.measure in meta.yaml, which appends a rule below. */
+.bf-flow {
+  margin-left: auto;
+  margin-right: auto;
+}
+@media print {
+  .bf-flow { break-before: page; page-break-before: always; padding-top: 0; }
+}
+
+.bf-matter h2 {
+  margin: 0 0 6mm;
+  padding: 0 0 3mm;
+  border-bottom: 1px solid var(--bf-rule);
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+  color: var(--bf-ink);
+}
+
+.bf-matter h3 {
+  margin: 7mm 0 3mm;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--bf-ink);
+}
+
+.bf-matter p {
+  margin: 0 0 3.5mm;
+  font-size: 0.94rem;
+  line-height: 1.6;
+  color: var(--bf-soft);
+}
+
+.bf-matter b { font-weight: 600; color: var(--bf-ink); }
+.bf-matter i { font-style: italic; }
+
+.bf-matter .work {
+  color: var(--bf-ink);
+  font-size: 1rem;
+}
+
+.bf-matter .grant {
+  margin: 5mm 0;
+  padding: 4mm 5mm;
+  border-left: 3px solid var(--bf-accent);
+  background: var(--bf-paper);
+}
+.bf-matter .grant p:last-child { margin-bottom: 0; }
+
+.bf-matter .signoff {
+  margin-top: 5mm;
+  color: var(--bf-faint);
+}
+
+.bf-matter .imprint {
+  margin-top: 7mm;
+  padding-top: 3mm;
+  border-top: 1px solid var(--bf-rule);
+  font-size: 0.8rem;
+  color: var(--bf-faint);
+}
+
+/* --- about the author ------------------------------------------------- */
+
+.bf-matter .bio p:last-child { margin-bottom: 0; }
+
+.bf-matter .qrpanel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6mm;
+  margin: 8mm 0 0;
+}
+@media (max-width: 34rem) {
+  .bf-matter .qrpanel { grid-template-columns: 1fr; }
+}
+
+.bf-matter .qrcard {
+  display: flex;
+  gap: 4mm;
+  align-items: flex-start;
+  padding: 4mm;
+  border: 1px solid var(--bf-rule);
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+/* The host may style a bare .code; this is more specific, so it wins. */
+.bf-matter .qrcard .code {
+  flex: 0 0 auto;
+  width: 24mm;
+  background: none;
+  padding: 0;
+  border: 0;
+}
+.bf-matter .qrcard .code svg,
+.bf-matter .qr { display: block; width: 24mm; height: 24mm; }
+
+.bf-matter .qrcard .what {
+  display: flex;
+  flex-direction: column;
+  gap: 1mm;
+  min-width: 0;
+}
+.bf-matter .qrcard .what b { font-size: 0.9rem; }
+.bf-matter .qrcard .what span {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--bf-soft);
+}
+.bf-matter .qrcard .what code {
+  /* Without this, <code> falls to the browser's default mono -- Consolas on
+     Windows, DejaVu on Linux -- so the same book rendered a different face
+     depending on the machine that built it. Books that happen to define their
+     own .qrcard code rule were fine; the ones that did not, were not. */
+  font-family: var(--mono, var(--bf-mono, ui-monospace, monospace));
+  font-size: 0.78rem;
+  color: var(--bf-accent);
+  background: none;
+  padding: 0;
+}
+
+.bf-matter .colophon {
+  margin-top: 9mm;
+  padding-top: 4mm;
+  border-top: 1px solid var(--bf-rule);
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--bf-faint);
+}
+.bf-matter .colophon b { color: var(--bf-soft); }
+
+/* --- screen reading order -------------------------------------------------
+ *
+ * On paper the order is right: cover, title page, copyright, the argument,
+ * about. On a screen it is a wall -- a reader meets a full-bleed cover, a
+ * title page, a copyright notice and an AI-disclosure note before one
+ * sentence of the argument, which on a 30-page essay is four screens of
+ * scrolling to find out whether it is worth reading.
+ *
+ * So screen only: drop the cover image, and send the copyright/disclosure
+ * block to the end where a reader who wants it can still find it. @media
+ * print is untouched, so the PDF keeps the print order exactly.
+ *
+ * body becomes a flex column because `order` needs a flex container. That
+ * stops margins collapsing BETWEEN top-level sections -- which is why the
+ * sections themselves are given a single margin direction below rather than
+ * relying on collapse.
+ */
+@media screen {
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  body > section.cover,
+  body > section.sheet.cover { display: none; }
+
+  body > section { order: 0; }
+  body > .bf-front { order: 8; }
+  body > .bf-about { order: 9; }
+}
+/* /BOOK-FORGE:MATTER-CSS */
+
+</style>
+
+<!-- ============================ SITE HEADER ============================ -->
+<nav>
+  <a class="nav-brand" href="https://tech.anujsadani.in/">Anuj Sadani</a>
+  <div class="nav-right">
+    <span class="nav-tag">AI Engineering</span>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle color theme">
+      <span class="theme-icon-moon" aria-hidden="true">&#9680;</span>
+      <span class="theme-icon-sun" aria-hidden="true">&#9728;</span>
+    </button>
+  </div>
+</nav>
+
+<main class="page-wrap">
+  <header class="hero">
+    <p class="hero-eyebrow">A short book &middot; 2026</p>
+    <h1>The Attention Invoice</h1>
+    <p class="hero-deck">How AI slop transfers its cost to everyone else.</p>
+    <div class="hero-meta"><span>Anuj Sadani</span><span class="hero-meta-sep">&middot;</span><span>8 chapters</span><span class="hero-meta-sep">&middot;</span><span>Sources included</span></div>
+  </header>
+
+  <!-- ARTICLE-AUDIO:BEGIN -->
+  <div class="ap" id="articleaudio">
+    <div class="ap-hd">
+      <span class="ap-ico" aria-hidden="true">&#9654;</span>
+      <div><span class="ap-kick">Audio edition</span><b>Listen to this book</b><span class="ap-sub">8 parts &middot; 22 min</span></div>
+      <button class="ap-rate" type="button" aria-label="Playback speed">1&#215;</button>
+      <button class="ap-more" type="button" aria-expanded="false">Parts</button>
+    </div>
+    <p class="ap-now"></p>
+    <audio controls preload="none"></audio>
+    <ol class="ap-list" hidden>
+      <li><button type="button" data-src="audio/01-what-is-ai-slop.wav"><span class="ap-n">1</span><span class="ap-nm">Chapter 1. What Is AI Slop?</span><span class="ap-d">7:42</span></button></li>
+      <li><button type="button" data-src="audio/02-the-argument-about-the-word.wav"><span class="ap-n">2</span><span class="ap-nm">Chapter 2. The Argument About the Word</span><span class="ap-d">2:14</span></button></li>
+      <li><button type="button" data-src="audio/03-when-output-became-cheap.wav"><span class="ap-n">3</span><span class="ap-nm">Chapter 3. When Output Became Cheap</span><span class="ap-d">2:16</span></button></li>
+      <li><button type="button" data-src="audio/04-the-artifact-cannot-tell-you.wav"><span class="ap-n">4</span><span class="ap-nm">Chapter 4. The Artifact Cannot Tell You</span><span class="ap-d">1:53</span></button></li>
+      <li><button type="button" data-src="audio/05-the-price-paid-by-readers.wav"><span class="ap-n">5</span><span class="ap-nm">Chapter 5. The Price Paid by Readers</span><span class="ap-d">2:02</span></button></li>
+      <li><button type="button" data-src="audio/06-when-slop-enters-the-repository.wav"><span class="ap-n">6</span><span class="ap-nm">Chapter 6. When Slop Enters the Repository</span><span class="ap-d">1:56</span></button></li>
+      <li><button type="button" data-src="audio/07-the-responsibility-test.wav"><span class="ap-n">7</span><span class="ap-nm">Chapter 7. The Responsibility Test</span><span class="ap-d">1:58</span></button></li>
+      <li><button type="button" data-src="audio/08-what-to-do-on-monday.wav"><span class="ap-n">8</span><span class="ap-nm">Chapter 8. What to Do on Monday</span><span class="ap-d">1:59</span></button></li>
+    </ol>
+  </div>
+  <div class="ap-mini" id="ap-mini" hidden>
+    <button class="ap-mb" data-act="play" aria-label="Play or pause">&#9654;</button>
+    <button class="ap-mt" data-act="goto" title="Back to the player"></button>
+    <div class="ap-mp" data-act="seek"><div class="ap-mpf"></div></div>
+    <em class="ap-mtime">0:00</em>
+    <button class="ap-mb ghost ap-mr" data-act="rate" aria-label="Playback speed">1&#215;</button>
+    <button class="ap-mb ghost" data-act="next" aria-label="Next part">&#9199;</button>
+  </div>
+  <script src="assets/player.js" defer></script>
+  <!-- ARTICLE-AUDIO:END -->
+
+  <article class="prose">
+<h1 id="the-attention-invoice">The Attention
+Invoice</h1>
+<figure>
+<img src="assets/cover.png"
+alt="Editorial illustration of a single marked page interrupting a flood of near-identical documents." />
+<figcaption aria-hidden="true">Editorial illustration of a single marked
+page interrupting a flood of near-identical documents.</figcaption>
+</figure>
+<h2 id="how-ai-slop-transfers-its-cost-to-everyone-else">How AI slop
+transfers its cost to everyone else</h2>
+<p>Anuj Sadani</p>
+<p>First edition · 2026</p>
+
+<h1 id="a-note-on-method">A Note on Method</h1>
+<p>This book is an argued essay, not a claim that the boundary of “AI
+slop” can be measured precisely. Its factual claims are footnoted to the
+source that supports them. Its central position is the author’s: the
+important distinction is not between human and machine tokens, but
+between work that has received judgment and work that has merely been
+produced.</p>
+
+<!-- BOOK-FORGE:FRONT-MATTER v1 sha=aafebf52a9db -->
+<section class="bf-matter bf-front bf-flow">
+  <h2>Copyright, permissions, and how this was made</h2>
+
+  <div class="legal">
+    <p class="work">The Attention Invoice &mdash; an essay on what "AI slop" names, and who ends up paying for the attention it wastes.</p>
+
+    <p>Copyright &copy; 2026 Anuj Sadani.</p>
+
+    <div class="grant">
+      <p>All rights reserved. Quote it in a review or a piece of criticism with
+          attribution; anything further, please ask.</p>
+    </div>
+
+    <h3>A note on how this book was written</h3>
+
+    <p>An AI system drafted this book. Not "assisted with" &mdash; drafted it,
+      from the outline through to the prose you are reading. I set the question
+      and its boundaries, made the judgment calls, argued with the drafts, and
+      put my name on the result. The errors are mine; the model does not get to
+      share the blame.</p>
+
+    <p>If that makes you wince, I understand the reflex. The internet is full of
+      confident, sourceless, frictionless text, and the reasonable response has
+      been to distrust anything that reads too smoothly. But the objection worth
+      taking seriously is not that a machine wrote it. It is that nobody checked
+      it.</p>
+
+    <p>This one carries no formal verification gate &mdash; it is an argument
+      rather than an audit, and you should read it as one. Where it leans on a
+      number or a study, the source is named so you can go and disagree with it
+      at first hand.</p>
+
+    <p>And if you notice the em-dashes, they are mine. I have always written this
+      way. Make your peace with them.</p>
+
+    <p class="signoff">&mdash; A.S.</p>
+
+    <p class="imprint">First edition &middot; 2026</p>
+  </div>
+
+</section>
+<!-- /BOOK-FORGE:FRONT-MATTER -->
+
+<!-- BOOK-FORGE:AFTER-COVER -->
+
+<section class="chapter">
+<h1 id="chapter-1.-what-is-ai-slop">Chapter 1. What Is AI Slop?</h1>
+<p>LinkedIn now has a feedback option called “Seems like AI slop.” Open
+the menu on a post, choose it, and LinkedIn treats that as a signal that
+the post did not feel valuable. It does not remove the post or make a
+policy finding about its author.<a href="#fn1" class="footnote-ref"
+id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>The feature is useful because it names a feeling that has become
+familiar. A person opens a post promising an insight about leadership,
+AI agents, or the future of work. The prose is smooth. The paragraphs
+are clean. There is a confident opening, a tidy list, and a final
+lesson. Then the reader reaches the end and realizes that no one has
+actually said anything.</p>
+<p>But the label also creates a confusion. People hear “AI slop” and
+infer “text that an AI wrote.” That is too broad to be useful. An AI can
+help a person research, outline, translate, edit, test an argument, or
+make a difficult idea clearer. None of those acts makes the result
+slop.</p>
+<p>The real question is harder: <strong>did someone exercise enough
+judgment to make this worth another person’s attention?</strong></p>
+<h2 id="the-distinction-linkedin-gets-right">The distinction LinkedIn
+gets right</h2>
+<p>LinkedIn’s own definition is better than the name of its button. It
+describes AI slop as low-effort, likely AI-generated content that sounds
+polished on the surface but lacks a point of view, unique perspective,
+or substance. It says the distinction is not how content was created,
+but whether it adds value and reflects a person’s perspective,
+experience, or expertise.<a href="#fn2" class="footnote-ref" id="fnref2"
+role="doc-noteref"><sup>2</sup></a></p>
+<p>That is the right center of gravity. The generated sentence is not
+the offense. The unexamined sentence is.</p>
+<p>Imagine three people publishing an article about AI agents:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Process</th>
+<th>What happened</th>
+<th>Slop?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Generate → publish</td>
+<td>A model produces 1,500 words and the author pastes them into a
+post.</td>
+<td>Usually.</td>
+</tr>
+<tr>
+<td>Human idea → AI draft → human edit</td>
+<td>The author supplies a thesis, examples, corrections, and a real
+rewrite.</td>
+<td>Usually not.</td>
+</tr>
+<tr>
+<td>Human research → AI synthesis → human judgment</td>
+<td>The author decides which sources matter, checks the claims, and
+stands behind the conclusion.</td>
+<td>No.</td>
+</tr>
+</tbody>
+</table>
+<p>The table is intentionally about process rather than style. The
+visible artifact is a weak signal. A heavily directed and carefully
+edited piece can retain the rhythm of a model. A person can write
+generic, derivative, attention-seeking prose without touching an AI.
+Manual typing has never been a reliable measure of thought.</p>
+<p>Two articles can therefore look similar while being fundamentally
+different. One may be prompt, generate, publish. The other may contain
+an idea, reporting, context construction, criticism, correction, and
+verification before the final generation. A reader cannot reliably see
+that history from punctuation, em dashes, headings, or an AI-detection
+score.</p>
+<p>Calling both pieces slop because both contain generated tokens
+collapses authorship into keystrokes. Authorship is better understood as
+the work of choosing: choosing the question, the evidence, the examples,
+the omissions, and the words one is prepared to defend.</p>
+<h2 id="a-family-resemblance-not-a-test">A family resemblance, not a
+test</h2>
+<p>There is no settled technical definition of AI slop. A recent
+scholarly paper argues that it has resisted formal definition and
+proposes three recurring properties instead: superficial competence,
+asymmetric effort, and mass producibility.<a href="#fn3"
+class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<p>Those properties explain why the phrase feels precise even when its
+boundary is fuzzy.</p>
+<p><strong>Superficial competence</strong> is the polished shell. The
+grammar works. The image looks plausible. The memo has the expected
+headings. Underneath, the claims are unsupported, the summary never gets
+specific, or the apparent conclusion is just the premise repeated in
+better phrasing.</p>
+<p><strong>Asymmetric effort</strong> is the production problem. It
+takes seconds to make a convincing-looking artifact and much longer for
+another person to decide whether it is accurate, useful, or original.
+The producer gets the convenience; the reader, reviewer, customer, or
+colleague inherits the verification cost.</p>
+<p><strong>Mass producibility</strong> is the ecosystem problem. One
+mediocre image or awkward paragraph is not necessarily what people mean
+by slop. The term becomes more apt when a system can make thousands of
+near-substitutes for search rankings, ad impressions, engagement, or the
+appearance of output. Reporting on the rise of the term has repeatedly
+connected it to low-quality text, images, videos, and entire sites
+produced cheaply for search traffic.<a href="#fn4" class="footnote-ref"
+id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<p>None of these is a pass-fail test. A personalized surreal image can
+be silly and still mean something to the person who made it. A concise
+generated answer to a narrow question can be exactly what someone needs.
+The scholarly account makes this point too: so-called slop can meet
+demand for niche or personalized content and can carry aesthetic or
+social value.<a href="#fn5" class="footnote-ref" id="fnref5"
+role="doc-noteref"><sup>5</sup></a></p>
+<p>That is why “I dislike it” and “it is AI slop” should not be
+interchangeable. The term is most useful when it names a failure that
+affects someone beyond the author: an output that asks for attention,
+trust, or review without having been given enough thought to earn any of
+them.</p>
+<h2 id="the-missing-word-is-judgment">The missing word is judgment</h2>
+<p>The usual list of tells is familiar: generic language, repeated
+ideas, unnecessary length, fake profundity, too many headings, confident
+claims with no evidence. Those are symptoms. They matter because they
+suggest an absence of judgment, but none proves it.</p>
+<p>A person can use every fashionable AI writing habit and still make an
+original, careful argument. Another can avoid every tell and publish a
+confident falsehood they wrote alone. The important difference is
+whether someone took responsibility for the content: checked what could
+be checked, removed what did not hold up, supplied the context a model
+could not know, and decided that the piece had a reason to exist.</p>
+<p>This makes a better working definition:</p>
+<blockquote>
+<p><strong>AI slop is generated output whose cost of production has
+fallen much faster than the effort spent deciding whether it deserves to
+exist.</strong></p>
+</blockquote>
+<p>Or, in the shortest form: <strong>AI slop is a failure of judgment,
+not a method of generation.</strong></p>
+<p>The definition does not let every AI-assisted author off the hook. It
+raises the bar in the place that matters. If a model makes drafting
+cheap, then choosing, checking, and editing become more valuable, not
+less. The person who publishes the result still owns the claim.</p>
+<h2 id="the-software-version-of-the-same-problem">The software version
+of the same problem</h2>
+<p>This is not only a problem for feeds. Generative AI can produce code,
+documentation, tests, issue comments, design notes, and pull requests
+much faster than a team can understand them. The same asymmetry appears:
+generating an artifact is cheap; reviewing it, maintaining it, and
+recovering its rationale are expensive.</p>
+<p>The danger is not that AI wrote a function. A well-directed model can
+remove drudgery and leave more time for work that needs judgment. The
+danger arrives when a team measures generated volume as if it were
+progress, accepts code that nobody can explain, or creates documentation
+that no one has verified against the system it describes.</p>
+<p>That is engineering slop: artifacts that create the appearance of
+movement while increasing uncertainty about why they exist, whether they
+are correct, and who understands them. The technical debt is not simply
+AI-generated code. It is the gap between what the repository contains
+and what its humans can account for.</p>
+<p>The practical response is ordinary, even if the tools are new. Ask
+before publishing or merging: What is the point? What is new here? What
+did we verify? Who will own this when it breaks? If those questions do
+not have good answers, the artifact is not finished merely because it
+looks finished.</p>
+<p>LinkedIn’s button cannot reconstruct the invisible process behind a
+post. No detector can do that reliably either. But the phrase can still
+be useful if it reminds us what readers are reacting to: not the
+presence of a machine, but the absence of a mind that cared enough to
+decide.</p>
+</section>
+
+<section class="chapter">
+<h1 id="chapter-2.-the-argument-about-the-word">Chapter 2. The Argument
+About the Word</h1>
+<p>“Slop” is a hostile word. That is part of its usefulness and part of
+its risk. It carries the picture of something poured into a trough:
+plentiful, uniform, barely worth choosing. It is not a neutral
+description of a production method.</p>
+<p>That matters because the word is now used for at least four different
+complaints. Sometimes it means false information. Sometimes it means
+ugly or derivative culture. Sometimes it means a volume problem: too
+much content competing for the same attention. And sometimes it means a
+moral complaint about a creator who outsourced too much of the work.</p>
+<p>Those are related, but they are not the same.</p>
+<p>A fabricated local-news story is dangerous because it can be false. A
+hundred perfectly grammatical product descriptions can be useless
+because they add no information. A strange AI video made for one family
+may be neither useful nor dangerous; it may simply be a new form of
+play. If every one of these is called slop, the word stops helping us
+decide what to do next.</p>
+<p>The academic account of the term is unusually careful here. It does
+not offer a test that separates slop from non-slop. It offers a family
+resemblance: superficial competence, asymmetric effort, and mass
+producibility.<a href="#fn6" class="footnote-ref" id="fnref6"
+role="doc-noteref"><sup>6</sup></a> That is a better starting point than
+an AI detector because it points at the social conditions around the
+artifact.</p>
+<p>The boundary will remain fuzzy because value is contextual. A
+generated bedtime story made for one child may be cheap to create and
+deeply valuable to that child. A heavily researched report may use
+model-written sentences and still earn attention because the author made
+the decisive choices. The object does not announce its process.</p>
+<p>The question is therefore not “Was AI used?” It is: <strong>what
+burden did this artifact place on other people, and what care did its
+maker take before placing it there?</strong></p>
+<h2 id="in-practice">In practice</h2>
+<ul>
+<li><strong>Name the failure precisely.</strong> Say false, repetitive,
+derivative, or unreviewed when that is what you mean.</li>
+<li><strong>Do not make style a verdict.</strong> Smooth prose is
+neither evidence of care nor evidence of its absence.</li>
+<li><strong>Reserve “slop” for the larger failure.</strong> It is most
+useful when cheap output has shifted verification, attention, or cleanup
+onto somebody else.</li>
+</ul>
+</section>
+
+<section class="chapter">
+<h1 id="chapter-3.-when-output-became-cheap">Chapter 3. When Output
+Became Cheap</h1>
+<p>For most of the internet’s life, publishing imposed a small amount of
+friction. Someone had to write the article, make the image, record the
+voiceover, or assemble the page. The cost was never high enough to
+guarantee quality. It was high enough to force a choice.</p>
+<p>Generative systems changed the shape of that choice. They did not
+make judgment cheap. They made the artifacts that normally signal
+judgment cheap: paragraphs, illustrations, outlines, summaries, scripts,
+reviews, and code.</p>
+<p>That creates a predictable temptation. When the cost of production
+falls, the producer can run more experiments. Some experiments are good:
+a teacher can make an explanation for a student who needs it; a small
+business can translate a manual; an engineer can draft a test case.
+Others are attempts to capture attention at a price close to zero.</p>
+<p>Content farms have found the second use especially attractive.
+NewsGuard’s tracker describes thousands of unreliable AI-generated news
+sites operating with little or no human oversight. It reports that such
+sites often publish dozens of articles a day, and that programmatic
+advertising can reward them without regard to the quality of the site
+carrying the ad.<a href="#fn7" class="footnote-ref" id="fnref7"
+role="doc-noteref"><sup>7</sup></a></p>
+<p>The important fact is not that the articles are machine-written. The
+business model does not need a reader to learn anything. It needs a page
+to be indexed, clicked, and shown an advertisement.</p>
+<p>This is why scale changes the moral texture of mediocre content. A
+weak essay asks for five minutes. Ten thousand weak essays change the
+cost of finding anything strong. They turn discernment into unpaid labor
+for everyone downstream: the reader searching, the editor reviewing, the
+platform ranking, the model training on the resulting web.</p>
+<p>Cheap supply does not create demand for meaning. It can, however,
+create a great deal of material that resembles meaning at first
+glance.</p>
+<h2 id="in-practice-1">In practice</h2>
+<ul>
+<li><strong>Measure a publishing system by reader benefit, not artifacts
+shipped.</strong></li>
+<li><strong>Ask what each item is for.</strong> “To rank” and “to help a
+reader decide” are not interchangeable purposes.</li>
+<li><strong>Put human review where distribution is automated.</strong>
+Scale without review is the condition in which a small quality problem
+becomes a public one.</li>
+</ul>
+</section>
+
+<section class="chapter">
+<h1 id="chapter-4.-the-artifact-cannot-tell-you">Chapter 4. The Artifact
+Cannot Tell You</h1>
+<p>A reader sees the final text. They do not see the notebook beside it,
+the rejected drafts, the source tabs, the fact check, or the moment
+someone removed a sentence because it could not be defended.</p>
+<p>This is the central difficulty in calling something AI slop. We can
+observe the artifact and infer from it. We cannot observe the process
+that produced it.</p>
+<p>The familiar tells are weak evidence. Certain transitions, an
+abundance of headings, em dashes, a polished but generic cadence: these
+may suggest a model, but they do not tell us whether an author supplied
+a real claim, constructed the context, or checked the result. A detector
+faces the same limit. Even if it identified machine-generated prose
+perfectly, it would identify generation, not judgment.</p>
+<p>The opposite error is equally common. A human can type every word of
+a vague, derivative post. The labor is real; the contribution may still
+be zero. We should not confuse authorship with keystrokes.</p>
+<p>Authorship is the chain of decisions that makes an artifact
+answerable: why this question, why these sources, why this example, why
+this conclusion, why now. AI can participate in that chain. It cannot
+remove the need for someone to own it.</p>
+<p>This is why disclosure alone is not a quality test. “Written with AI”
+can be honest and still leave a reader with no reason to trust the work.
+“Written by a human” can conceal carelessness. The more useful
+convention is responsibility: the named author should be able to explain
+and defend the work.</p>
+<h2 id="in-practice-2">In practice</h2>
+<ul>
+<li><strong>Keep an evidence trail for consequential work.</strong> A
+short list of sources and decisions is more meaningful than a purity
+claim about tools.</li>
+<li><strong>Use disclosure to clarify process, not to borrow
+credibility.</strong></li>
+<li><strong>Ask the author question.</strong> Can the person whose name
+is on this explain why the claim is here and what would change their
+mind?</li>
+</ul>
+</section>
+
+<section class="chapter">
+<h1 id="chapter-5.-the-price-paid-by-readers">Chapter 5. The Price Paid
+by Readers</h1>
+<p>The complaint about AI slop is often described as aesthetic: too many
+strange images, too much bland prose, another LinkedIn post that sounds
+like every other LinkedIn post. That is real, but it is not the deepest
+cost.</p>
+<p>The deeper cost is attention. Every plausible-looking low-value
+artifact asks a reader to make a small investigation. Is this true? Is
+it copied? Is there a real person behind it? Is the advice specific
+enough to use? Each investigation is cheap in isolation. At scale, it
+makes the information environment tiring.</p>
+<p>That fatigue changes behavior. Readers skim more aggressively. They
+trust less. They favor familiar sources because checking new ones is
+expensive. Small publishers and careful novices then pay a tax created
+by people who can flood the same channels with cheaper imitations.</p>
+<p>Researchers discussing AI slop describe the asymmetry directly:
+output can take far less effort to generate than a comparable human-made
+artifact, while its surface competence can disguise a lack of
+substance.<a href="#fn8" class="footnote-ref" id="fnref8"
+role="doc-noteref"><sup>8</sup></a> The reader must do the expensive
+part after the producer has skipped it.</p>
+<p>The problem resembles spam, but only up to a point. Spam filters work
+because many messages share patterns and because the cost of a false
+negative is often low. Slop may be persuasive, topical, and nearly
+correct. The most expensive cases are not absurd. They are the calm,
+credible paragraph that leaves out the one condition that matters.</p>
+<p>This is also why a blanket hostility to synthetic media is a poor
+answer. The goal is not a return to a world where only people with spare
+time can publish. The goal is a world where the cost of publishing does
+not become an invoice sent to everyone who reads.</p>
+<h2 id="in-practice-3">In practice</h2>
+<ul>
+<li><strong>Respect attention as a finite resource.</strong> Do not
+publish a summary when a link and one sentence would do.</li>
+<li><strong>Make claims checkable.</strong> Link the source, name the
+uncertainty, and remove decorative certainty.</li>
+<li><strong>Reward useful specificity.</strong> It is harder to
+mass-produce and easier for a reader to test.</li>
+</ul>
+</section>
+
+<section class="chapter">
+<h1 id="chapter-6.-when-slop-enters-the-repository">Chapter 6. When Slop
+Enters the Repository</h1>
+<p>Software teams are beginning to meet the same problem in a form they
+recognize immediately. An AI assistant can generate a feature branch, a
+test suite, a migration, a design memo, and a pull-request description
+before the reviewer has finished reading the ticket.</p>
+<p>The code may run. That is not the end of the question.</p>
+<p>Code has a longer afterlife than a post. It will be reviewed,
+deployed, debugged, changed by someone new, and used as evidence of how
+the system works. A patch that its author cannot explain transfers all
+of that future reasoning to other people.</p>
+<p>A recent paper frames this as a software commons problem: individual
+gains from AI-generated output can externalize costs onto reviewer
+capacity, codebase integrity, shared knowledge, and collaborative
+trust.<a href="#fn9" class="footnote-ref" id="fnref9"
+role="doc-noteref"><sup>9</sup></a> Another qualitative study of
+developer discussion identified review friction and quality degradation
+as central themes in complaints about AI-assisted software
+development.<a href="#fn10" class="footnote-ref" id="fnref10"
+role="doc-noteref"><sup>10</sup></a> These are early accounts, not
+settled measurements. They are still useful because they name where the
+cost appears.</p>
+<p>The engineering version of slop is therefore not “code made with AI.”
+It is code that creates the appearance of progress while increasing
+uncertainty about behavior, rationale, and ownership.</p>
+<p>The crucial question is not whether the assistant wrote the first
+draft. It is whether a human can trace the change from requirement to
+design to tests and can carry the responsibility when it fails. When
+that chain exists, AI can reduce drudgery. When it does not, generated
+volume becomes technical debt at production speed.</p>
+<h2 id="in-practice-4">In practice</h2>
+<ul>
+<li><strong>Review for explanation, not only execution.</strong> A
+passing test is necessary; an understood change is durable.</li>
+<li><strong>Require a rationale for non-obvious code.</strong> Generated
+comments are not a rationale unless someone verified them.</li>
+<li><strong>Keep changes small enough to own.</strong> A reviewer should
+be able to say what changed, why it is safe, and who will maintain
+it.</li>
+</ul>
+</section>
+
+<section class="chapter">
+<h1 id="chapter-7.-the-responsibility-test">Chapter 7. The
+Responsibility Test</h1>
+<p>There is no reliable detector for care. That does not leave us
+helpless. It means the standard should be behavioral rather than
+forensic.</p>
+<p>A useful responsibility test has five questions.</p>
+<p><strong>What is the point?</strong> A piece should be able to name
+the question it answers for a particular reader. “Content about AI” is a
+category, not a point.</p>
+<p><strong>What is new here?</strong> The answer may be a firsthand
+observation, a synthesis, a worked example, a useful framing, or a
+decision. If nothing is new, a link is usually better than a post.</p>
+<p><strong>What was checked?</strong> This does not demand impossible
+certainty. It demands that a publisher distinguish verified facts,
+interpretation, and speculation.</p>
+<p><strong>What was removed?</strong> Editing is evidence of judgment.
+The sentences that did not survive are often more important than the
+sentences that did.</p>
+<p><strong>Who owns the result?</strong> The person who publishes or
+merges should be able to answer questions about it without blaming the
+model.</p>
+<p>This test is deliberately indifferent to how many tokens a machine
+produced. It makes room for a writer who uses AI extensively and for one
+who uses none. It also makes the actual obligation visible: publishing
+is a promise to bear some of the reader’s verification burden
+yourself.</p>
+<p>In organizations, this should be a process rather than a cultural
+wish. People need enough time to read outputs, enough permission to say
+“this does not add up,” and incentives that do not reward artifact count
+over outcomes.</p>
+<p>The strongest defense against slop is not better taste. It is a
+system in which care is cheaper to exercise than carelessness is to pass
+downstream.</p>
+<h2 id="in-practice-5">In practice</h2>
+<ul>
+<li><strong>Add the five questions to publishing and PR
+templates.</strong></li>
+<li><strong>Treat uncertainty as useful information.</strong> “We do not
+know” is often the most valuable sentence in a report.</li>
+<li><strong>Make ownership explicit.</strong> A named owner is not
+decoration; it tells others where understanding is supposed to
+live.</li>
+</ul>
+</section>
+
+<section class="chapter">
+<h1 id="chapter-8.-what-to-do-on-monday">Chapter 8. What to Do on
+Monday</h1>
+<p>The useful response to AI slop is not to ban tools or to become a
+detective of punctuation. Both answers attack the visible surface and
+miss the real failure.</p>
+<p>Start with the work that leaves your hands.</p>
+<p>Before publishing, ask whether the piece contains a claim, a reader,
+and a reason. Remove the paragraph that only restates the title. Link
+the source that carries the fact. Replace a generic example with the
+actual case that changed your mind. If the answer is not ready, keep it
+as a note.</p>
+<p>Before merging, ask whether the author can narrate the change. Ask
+what was tested, what assumptions remain, and what would make the design
+wrong. Keep the change small enough for a reviewer to understand. These
+are not anti-AI rules. They are the old rules of responsible work, made
+urgent by a new rate of output.</p>
+<p>At the platform level, reward useful material rather than the
+frequency of posting. LinkedIn’s own guidance makes the same broad
+distinction: AI-assisted content is welcome when it reflects a real
+person’s perspective, experience, or expertise; generic and repetitive
+material is the problem.<a href="#fn11" class="footnote-ref"
+id="fnref11" role="doc-noteref"><sup>11</sup></a> That is a reasonable
+direction, even if no feedback button can see the full process behind a
+post.</p>
+<p>The word “slop” will remain imprecise. It may even become too broad
+to survive. The underlying problem will not disappear with the
+vocabulary: when production gets easier, judgment becomes the scarce
+resource.</p>
+<p>That is the thing worth defending. Not human typing for its own sake.
+Not a nostalgia for artificial scarcity. The expectation that when a
+person asks for our attention, someone has done the work of deciding why
+we should give it.</p>
+<h2 id="in-practice-6">In practice</h2>
+<ul>
+<li><strong>Use AI to increase the quality of decisions, not only the
+quantity of artifacts.</strong></li>
+<li><strong>Publish less when less is all you have.</strong> Silence is
+cheaper than asking strangers to sort through a draft.</li>
+<li><strong>Stand behind the work.</strong> That is what authorship has
+always meant.</li>
+</ul>
+</section>
+
+<section class="refs">
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>LinkedIn Help, “Best practices for content created with
+the help of AI.” The page says that the feedback option is available for
+posts and comments in the feed, and that receiving the analytics tip is
+not a takedown or policy decision. <a
+href="https://www.linkedin.com/help/linkedin/answer/a1123063"
+class="uri">https://www.linkedin.com/help/linkedin/answer/a1123063</a><a
+href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Same source. LinkedIn describes its focus as whether
+content adds value, rather than how it was created.<a href="#fnref2"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Cody Kommers et al., “Why Slop Matters” (2025), sections
+4–5. <a href="https://arxiv.org/abs/2601.06060"
+class="uri">https://arxiv.org/abs/2601.06060</a><a href="#fnref3"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Marina Adami, “AI-generated slop is quietly conquering
+the internet,” Reuters Institute for the Study of Journalism, November
+26, 2024. <a
+href="https://reutersinstitute.politics.ox.ac.uk/news/ai-generated-slop-quietly-conquering-internet-it-threat-journalism-or-problem-will-fix-itself"
+class="uri">https://reutersinstitute.politics.ox.ac.uk/news/ai-generated-slop-quietly-conquering-internet-it-threat-journalism-or-problem-will-fix-itself</a><a
+href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Kommers et al., “Why Slop Matters,” abstract and
+sections 2–3. <a href="https://arxiv.org/abs/2601.06060"
+class="uri">https://arxiv.org/abs/2601.06060</a><a href="#fnref5"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Cody Kommers et al., “Why Slop Matters” (2025), sections
+4–5. <a href="https://arxiv.org/abs/2601.06060"
+class="uri">https://arxiv.org/abs/2601.06060</a><a href="#fnref6"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>NewsGuard, “Tracking AI-enabled Misinformation,” updated
+June 23, 2026. <a
+href="https://www.newsguardtech.com/special-reports/ai-tracking-center/"
+class="uri">https://www.newsguardtech.com/special-reports/ai-tracking-center/</a><a
+href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>Kommers et al., “Why Slop Matters,” section 4. <a
+href="https://arxiv.org/abs/2601.06060"
+class="uri">https://arxiv.org/abs/2601.06060</a><a href="#fnref8"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>“AI Slop and the Software Commons” (2026), abstract. <a
+href="https://arxiv.org/abs/2604.16754"
+class="uri">https://arxiv.org/abs/2604.16754</a><a href="#fnref9"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>“An Endless Stream of AI Slop” (2026), abstract. <a
+href="https://arxiv.org/abs/2603.27249"
+class="uri">https://arxiv.org/abs/2603.27249</a><a href="#fnref10"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>LinkedIn Help, “Best practices for content created with
+the help of AI.” <a
+href="https://www.linkedin.com/help/linkedin/answer/a1123063"
+class="uri">https://www.linkedin.com/help/linkedin/answer/a1123063</a><a
+href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+<!-- BOOK-FORGE:ABOUT v1 sha=d8947696595f -->
+<section class="bf-matter bf-about bf-flow">
+  <h2>About the author</h2>
+
+  <div class="bio">
+    <p>Anuj Sadani builds AI systems and the teams that build them. He spent a
+      decade at NVIDIA, has worked inside AI-first organizations, and has led
+      multicultural engineering pods across Europe &mdash; sixteen-plus years,
+      most of them on the AI era's unglamorous half: turning hype into systems
+      that ship, and systems that ship into outcomes that hold up in production.
+      That work has fed into industry recognition from Gartner and Everest Group,
+      and an Innovator of the Year nod.</p>
+
+    <p>He is the author of <i>The Clean Vibe Coder: A Code of Conduct for
+      Programmers in the Age of AI Agents</i> and <i>Borrow the Line. Own the
+      Move.</i>, and writes about engineering, leadership, and what stays human
+      when the tools get good. He still believes the best technology is the kind
+      that makes the people around it braver.</p>
+  </div>
+
+  <div class="qrpanel">
+    <div class="qrcard">
+      <div class="code">{{QR_AUTHOR}}</div>
+      <div class="what">
+        <b>Writing and work</b>
+        <span>Essays, books, and what he is building.</span>
+        <code>anujsadani.in</code>
+      </div>
+    </div>
+    <div class="qrcard">
+      <div class="code">{{QR_TECH}}</div>
+      <div class="what">
+        <b>This book, and the evidence</b>
+        <span>Read this essay online, and the rest of the shelf.</span>
+        <code>tech.anujsadani.in</code>
+      </div>
+    </div>
+  </div>
+
+  <div class="colophon">
+    <b>The Attention Invoice</b> &mdash; an essay by Anuj Sadani, 2026.<br>
+      Read online: <b>tech.anujsadani.in/ai-slop</b>
+  </div>
+
+</section>
+<!-- /BOOK-FORGE:ABOUT -->
+
+<!-- BOOK-FORGE:BEFORE-END -->
+  </article>
+</main>
+<footer><span>The Attention Invoice &middot; Anuj Sadani</span><div class="footer-refs"><a href="https://tech.anujsadani.in/">tech.anujsadani.in</a></div></footer>
+<!-- Toggle wiring: flip data-theme on click and remember the choice. -->
+<script>
+  (function () {
+    var btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var cur = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      var next = cur === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    });
+  })();
+</script>
