@@ -95,5 +95,5 @@ verify:
     - "Copyright, permissions"
     - "About the author"
   min_images: 1
-  expect_pages: 18
+  expect_pages: 19
   page_tolerance: 3

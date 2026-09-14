@@ -293,11 +293,27 @@
     .nav,footer,.aud{display:none!important;}
     body{background:#fff;font-size:11pt;line-height:1.62;}
     @page{ size:A4; margin:24mm 21mm 22mm 21mm; }
+    @page :first{ margin:0; }
     .wrap{max-width:none;padding:0;}
-    .cover{break-after:page;padding-top:0;}
+    .cover{break-after:page;padding:24mm 21mm 22mm 21mm;}
+    /* The page margin is 0 on the cover (see @page :first above) so the
+       cover image can bleed to the physical edge; the padding just added
+       to .cover keeps the surrounding text -- including the figcaption --
+       at a normal inset. Only the <img> itself is pulled back out past
+       that padding with a negative margin equal to it, so the picture
+       reaches the page edge while its caption stays inset like the rest
+       of the cover text. Square corners once it is edge-to-edge. */
+    /* The source art is a 2:3 portrait (1024x1536) -- at full bleed WIDTH its
+       natural height (315mm) is taller than the whole A4 page. Cap the height
+       and crop with object-fit so the bleed is a wide band, not an overflow. */
+    .cover figure img{margin:0 -21mm;width:calc(100% + 42mm);max-width:none;height:72mm;object-fit:cover;border-radius:0;}
+    .cover figcaption{margin-top:6px;}
+    .cover-note{margin-top:16px;}
+    .cover-foot{margin-top:16px;padding-top:10px;}
     .section{padding:18px 0 6px;}
     h2,h3{break-after:avoid;break-inside:avoid;}
-    .sec-tag,p.lead,.beat{break-after:avoid;break-inside:avoid;}
+    .sec-tag{break-before:page;page-break-before:always;break-after:avoid;break-inside:avoid;}
+    p.lead,.beat{break-after:avoid;break-inside:avoid;}
     p{orphans:3;widows:3;}
     li{orphans:2;widows:2;}
     figure,.tbl-wrap,.verdict,.note,blockquote,.check,.contents{break-inside:avoid;}
