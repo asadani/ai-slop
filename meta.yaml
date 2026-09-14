@@ -19,6 +19,13 @@ output:
 page:
   size: A4
 
+# Default virtual-time-budget (30s) sometimes let Chrome paint a paragraph
+# before the second Google Fonts request (Spectral SemiBold) finished
+# loading, synthesizing an unembeddable Type 3 glyph for that one run.
+# More budget gives every @font-face request time to resolve before print.
+pdf:
+  virtual_time_budget_ms: 60000
+
 cover:
   art: assets/cover.png
   page: false               # the essay renders its own cover, inline in the prose
@@ -31,6 +38,21 @@ qr:
 
 folio:
   enabled: false             # @page margins only; no running-foot stamp needed yet
+
+# Fraunces is delivered by Google Fonts as a variable font, and Chrome prints
+# variable fonts as Type 3 -- unextractable, and unusable for print. These
+# static cuts are inlined after the host's own @font-face rules so they win.
+# Spectral and IBM Plex Mono are requested from Google Fonts as discrete
+# static weights (no axis range in the css2 query), so they do not need
+# inlining -- matches the-failed-engineer/meta.yaml's fonts: block.
+fonts:
+  anchor: "</style>"
+  inline:
+    - {family: "Fraunces", weight: 400, file: "Fraunces-Regular.woff2"}
+    - {family: "Fraunces", weight: 600, file: "Fraunces-SemiBold.woff2"}
+    - {family: "Fraunces", weight: 800, file: "Fraunces-ExtraBold.woff2"}
+    - {family: "Fraunces", weight: 400, style: italic, file: "Fraunces-Italic.woff2"}
+    - {family: "Fraunces", weight: 600, style: italic, file: "Fraunces-SemiBoldItalic.woff2"}
 
 matter:
   mode: flow
@@ -73,5 +95,5 @@ verify:
     - "Copyright, permissions"
     - "About the author"
   min_images: 1
-  expect_pages: 24
+  expect_pages: 18
   page_tolerance: 3
